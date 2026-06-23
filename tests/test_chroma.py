@@ -3,9 +3,6 @@ from app.services.chroma_service import add_documents, search
 
 # Sample documents
 texts = [
-    "Python is a programming language.",
-    "FastAPI is a modern web framework.",
-    "ChromaDB is a vector database."
 ]
 
 # Generate embeddings

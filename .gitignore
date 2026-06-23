@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+data/chroma_db/
 
 # Environment variables
 .env

@@ -9,16 +9,21 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def ask_llm(context: str, question: str) -> str:
     prompt = f"""
-You are a helpful AI assistant.
+    You are a helpful AI assistant.
 
-Answer the user's question ONLY using the context below.
+    Answer ONLY using the provided context.
 
-Context:
-{context}
+    If the answer cannot be found in the context, reply exactly:
+    "I cannot find that information in the uploaded document."
 
-Question:
-{question}
-"""
+    Do not make up facts or use outside knowledge.
+
+    Context:
+    {context}
+
+    Question:
+    {question}
+    """
 
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",

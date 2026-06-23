@@ -18,14 +18,24 @@ def reset_collection():
 
 def add_documents(ids, texts, embeddings):
     collection = get_collection()
+
+    metadatas = [
+        {
+            "chunk_index": i,
+            "source": "uploaded_pdf"
+        }
+        for i in range(len(texts))
+    ]
+
     collection.add(
         ids=ids,
         documents=texts,
         embeddings=embeddings,
+        metadatas=metadatas,
     )
 
 
-def search(query_embedding, n_results=3):
+def search(query_embedding, n_results=5):
     collection = get_collection()
     return collection.query(
         query_embeddings=[query_embedding],
