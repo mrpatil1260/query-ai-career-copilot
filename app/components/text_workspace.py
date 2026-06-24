@@ -8,8 +8,8 @@ def render_text_workspace():
         tuple[str, str] -> (input_text, selected_action)
     """
 
-    st.header("📝 Text Workspace")
-    st.caption("Paste any text and let Query AI analyze it.")
+    st.header("📝 Text Intelligence")
+    st.caption("Paste any text and use AI to summarize, explain, simplify, rewrite, or extract insights.")
 
     input_text = st.text_area(
         "Paste your text here",
@@ -23,6 +23,11 @@ def render_text_workspace():
             "Summarize",
             "Explain",
             "Extract Key Points",
+            "Simplify",
+            "Generate Keywords",
+            "Rewrite Professionally",
+            "Convert to Bullet Points",
+            "Correct Grammar",
         ],
         horizontal=True,
     )
