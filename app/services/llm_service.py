@@ -2,42 +2,33 @@ import os
 from dotenv import load_dotenv
 from groq import Groq
 
-# Load environment variables
 load_dotenv()
 
-# Initialize Groq client
 client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
 )
 
 
-def ask_llm(context: str, question: str) -> str:
+def ask_llm(
+    context: str,
+    question: str,
+    system_prompt: str | None = None,
+) -> str:
     """
-    Generate an answer using the retrieved document context.
+    Generic LLM helper that supports custom system prompts.
     """
 
-    prompt = f"""
+    if system_prompt is None:
+        system_prompt = """
 You are an AI Knowledge Assistant.
 
-Your task is to answer the user's question ONLY using the provided context.
+Answer the user's question ONLY using the provided context.
 
 Rules:
-1. Use ONLY the information present in the context.
-2. Do NOT use your own knowledge.
-3. Do NOT make up facts or guess.
-4. If the answer is not present in the context, respond exactly:
-   "I cannot find that information in the uploaded document."
-5. Keep answers concise, factual, and well-structured.
-
-========================
-CONTEXT
-========================
-{context}
-
-========================
-QUESTION
-========================
-{question}
+1. Use only the supplied context.
+2. Do not invent facts.
+3. If the answer cannot be determined from the context, reply:
+'I cannot find that information in the uploaded document.'
 """
 
     response = client.chat.completions.create(
@@ -45,9 +36,19 @@ QUESTION
         temperature=0,
         messages=[
             {
+                "role": "system",
+                "content": system_prompt,
+            },
+            {
                 "role": "user",
-                "content": prompt,
-            }
+                "content": f"""
+Context:
+{context}
+
+Question:
+{question}
+""",
+            },
         ],
     )
 
