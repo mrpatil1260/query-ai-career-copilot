@@ -1,41 +1,72 @@
-📚 AI Knowledge Assistant (RAG-based LLM Application)
+# 🧠 Query AI
 
-An AI-powered document question-answering system built with Python, Streamlit, ChromaDB, Sentence Transformers, and Groq LLM.
+Query AI is an AI-powered Document, Text, Code & Resume Intelligence Platform designed to help you extract insights, answer questions, analyze content, and generate summaries across various data types. Built with cutting-edge technologies, Query AI provides an intuitive interface to interact with your documents, text snippets, codebases, and resumes using natural language queries.
 
-Upload any PDF and ask natural language questions about its contents. The application uses Retrieval-Augmented Generation (RAG) to retrieve relevant information from the document and generate accurate answers.
+---
 
-⸻
+## 🚀 Features
 
-🚀 Features
+### Document Intelligence
+- 📄 Upload PDF documents  
+- 🔍 Extract and process text from PDFs  
+- ✂️ Smart text chunking for efficient retrieval  
+- 🧠 Generate semantic embeddings for accurate search  
+- 🔎 Semantic search using vector similarity  
+- 🤖 AI-powered question answering and summarization  
+- 📚 View source chunks used for answers  
+- 💬 Session-based chat history  
 
-* 📄 Upload PDF documents
-* 🔍 Extract text from PDFs
-* ✂️ Smart text chunking
-* 🧠 Generate semantic embeddings
-* 🗂️ Store embeddings in ChromaDB
-* 🔎 Semantic search using vector similarity
-* 🤖 AI-powered answers using Groq LLM
-* 💬 Chat history
-* 📚 View source chunks used for answers
-* ⚡ Fast and responsive Streamlit interface
+### Text Intelligence
+Perform advanced operations on plain text with these actions:  
+- Summarize text  
+- Extract key points  
+- Generate questions and answers  
+- Translate text  
+- Paraphrase content  
+- Sentiment analysis  
+- Text classification  
+- Named entity recognition (NER)  
 
-⸻
+### Code Intelligence
+Analyze and interact with code snippets and repositories:  
+- Explain code functionality  
+- Generate code documentation  
+- Detect bugs and suggest fixes  
+- Refactor code snippets  
+- Translate code between languages  
+- Generate test cases  
+- Summarize code changes  
+- Answer code-related questions  
 
-🛠️ Tech Stack
+### Resume Intelligence
+Tailored features for resume analysis and enhancement:  
+- Extract key skills and experience  
+- Summarize career highlights  
+- Suggest improvements and optimizations  
+- Match resumes to job descriptions  
+- Generate interview questions  
+- Analyze gaps and inconsistencies  
+- Score resume relevance  
+- Provide tailored career advice  
 
-* Language: Python 3.12
-* Frontend: Streamlit
-* LLM: Groq (Llama 3.3 70B)
-* Embeddings: Sentence Transformers (all-MiniLM-L6-v2)
-* Vector Database: ChromaDB
-* PDF Processing: PyMuPDF
-* Chunking: LangChain RecursiveCharacterTextSplitter
-* Environment Management: python-dotenv
+---
 
-⸻
+## 🛠️ Tech Stack
 
-📂 Project Structure
+- **Language:** Python 3.12  
+- **Frontend:** Streamlit  
+- **Large Language Model:** Groq Llama 3.3 70B  
+- **Embeddings:** Sentence Transformers (all-MiniLM-L6-v2)  
+- **Vector Database:** ChromaDB  
+- **PDF Processing:** PyMuPDF  
+- **Text Chunking:** LangChain RecursiveCharacterTextSplitter  
+- **Environment Management:** python-dotenv  
 
+---
+
+## 📂 Project Structure
+
+```
 ai-knowledge-assistant/
 │
 ├── app/
@@ -59,173 +90,121 @@ ai-knowledge-assistant/
 ├── .env.example
 ├── .gitignore
 └── README.md
+```
 
-⸻
+---
 
-🏗️ System Architecture
+## ⚙️ Installation
 
-                PDF Upload
-                     │
-                     ▼
-          PDF Text Extraction
-                     │
-                     ▼
-             Text Chunking
-                     │
-                     ▼
-       Sentence Transformer Embeddings
-                     │
-                     ▼
-              ChromaDB Storage
-                     │
-                     ▼
-          Semantic Similarity Search
-                     │
-                     ▼
-         Retrieved Relevant Chunks
-                     │
-                     ▼
-              Groq LLM (Llama)
-                     │
-                     ▼
-              AI Generated Answer
+1. **Clone the repository**
 
-⸻
-
-⚙️ Installation
-
-Clone the repository
-
+```bash
 git clone <your-github-repo-url>
 cd ai-knowledge-assistant
+```
 
-Create a virtual environment
+2. **Create a virtual environment**
 
+```bash
 python -m venv .venv
+```
 
-Activate the environment
+3. **Activate the environment**
 
-macOS / Linux
+- macOS / Linux
 
+```bash
 source .venv/bin/activate
+```
 
-Windows
+- Windows
 
+```bash
 .venv\Scripts\activate
+```
 
-Install dependencies
+4. **Install dependencies**
 
+```bash
 pip install -r requirements.txt
+```
 
-⸻
+---
 
-🔑 Environment Variables
+## 🔑 Environment Variables
 
-Create a .env file in the project root:
+Create a `.env` file in the project root with the following content:
 
+```
 GROQ_API_KEY=your_groq_api_key
+```
 
-⸻
+Replace `your_groq_api_key` with your actual API key.
 
-▶️ Run the Application
+---
 
+## ▶️ Running the Application
+
+Start the Streamlit app with:
+
+```bash
 streamlit run streamlit_app.py
+```
 
-Open:
+Then open your browser and navigate to:
 
+```
 http://localhost:8501
+```
 
-⸻
+---
 
-💡 Example Questions
+## 🧠 How It Works
 
-* Summarize this document.
-* What programming languages are mentioned?
-* What projects are listed?
-* What frameworks does the candidate know?
-* What are the key skills discussed?
+1. Upload a document (PDF), text snippet, code, or resume.  
+2. Extract and preprocess content (text extraction, chunking, embedding).  
+3. Store embeddings in ChromaDB for efficient semantic search.  
+4. Enter your natural language query or select an action.  
+5. Retrieve relevant chunks or data based on semantic similarity.  
+6. Use Groq LLM to generate accurate, context-aware responses.  
+7. Display answers, summaries, or analyses along with source context.  
 
-⸻
+---
 
-🧠 How It Works
+## 💡 Use Cases
 
-1. Upload a PDF.
-2. Extract text from the document.
-3. Split the text into manageable chunks.
-4. Generate embeddings for each chunk.
-5. Store embeddings in ChromaDB.
-6. Embed the user’s question.
-7. Retrieve the most relevant chunks.
-8. Send the retrieved context and question to the Groq LLM.
-9. Display the generated answer.
+- Quickly summarize lengthy reports, contracts, or research papers.  
+- Extract actionable insights from meeting notes or emails.  
+- Analyze and document codebases or snippets.  
+- Improve resumes and prepare for interviews.  
+- Automate question answering for internal knowledge bases.  
+- Translate and paraphrase content for multilingual teams.  
+- Detect bugs and improve code quality with AI suggestions.  
+- Perform sentiment analysis and text classification on customer feedback.  
 
-⸻
+---
 
-📈 Future Enhancements
+## 📈 Future Roadmap
 
-* Multi-document support
-* User authentication
-* Persistent chat sessions
-* Citation-aware answers
-* Cloud deployment
-* Docker support
-* FastAPI REST endpoints
+- Enhanced multi-document and multi-format support  
+- User authentication and personalized sessions  
+- Citation-aware and explainable AI answers  
+- REST API endpoints with FastAPI  
+- Cloud deployment and containerization (Docker, Kubernetes)  
+- Integration with external data sources and APIs  
+- Real-time collaboration features  
+- Advanced code intelligence with language-specific parsers  
 
-⸻
+---
 
-👨‍💻 Author
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Author
 
 Prasad Patil
 
 Built as a portfolio project to demonstrate practical skills in Python, Generative AI, Retrieval-Augmented Generation (RAG), vector databases, and LLM integration.
-
-ai-knowledge-assistant/
-│
-├── app/
-│   ├── api/
-│   ├── models/
-│   ├── services/
-│   │   ├── pdf_service.py
-│   │   ├── chunk_service.py
-│   │   ├── embedding_service.py
-│   │   ├── chroma_service.py
-│   │   └── llm_service.py
-│   └── main.py
-│
-├── data/
-│   ├── uploads/
-│   └── chroma_db/
-│
-├── tests/
-├── streamlit_app.py
-├── requirements.txt
-├── .env.example
-├── .gitignore
-└── README.md
-
-
-                PDF Upload
-                     │
-                     ▼
-          PDF Text Extraction
-                     │
-                     ▼
-             Text Chunking
-                     │
-                     ▼
-       Sentence Transformer Embeddings
-                     │
-                     ▼
-              ChromaDB Storage
-                     │
-                     ▼
-          Semantic Similarity Search
-                     │
-                     ▼
-         Retrieved Relevant Chunks
-                     │
-                     ▼
-              Groq LLM (Llama)
-                     │
-                     ▼
-              AI Generated Answer
