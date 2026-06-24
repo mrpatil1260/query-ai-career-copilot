@@ -12,10 +12,9 @@ def render_text_workspace():
     st.caption("Paste any text and use AI to summarize, explain, simplify, rewrite, or extract insights.")
 
     input_text = st.text_area(
-        "Paste your text here",
-        height=300,
-        placeholder="Paste notes, articles, documentation, emails, or any text...",
-    )
+    "Paste your text here",
+    height=350,
+)
 
     action = st.radio(
         "Choose an action",

@@ -10,9 +10,9 @@ def render_code_workspace():
             (code_text, selected_language, selected_action)
     """
 
-    st.header("💻 Code Workspace")
+    st.header("💻 Code Intelligence")
     st.caption(
-        "Paste source code and let Query AI analyze it."
+        "Paste source code and let Query AI explain, review, optimize, refactor, or generate documentation and tests."
     )
 
     language = st.selectbox(
@@ -36,12 +36,15 @@ def render_code_workspace():
 
     action = st.radio(
         "Choose an action",
-        [
+        options=[
             "Explain Code",
             "Find Bugs",
             "Optimize Code",
             "Analyze Complexity",
             "Generate Documentation",
+            "Suggest Best Practices",
+            "Refactor Code",
+            "Generate Unit Tests",
         ],
         horizontal=True,
     )

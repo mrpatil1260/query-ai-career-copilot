@@ -7,31 +7,65 @@ def analyze_code(
     action: str,
 ) -> str:
     """
-    Analyze source code using a code-specialized prompt.
+    Analyze source code using task-specific prompts.
     """
 
-    system_prompt = f"""
-You are an expert {language} software engineer and code reviewer.
+    system_prompts = {
+        "Explain Code": f"""
+You are an expert {language} developer.
+Explain what the code does step by step in simple language.
+""",
 
-Your job is to analyze the provided source code.
+        "Find Bugs": f"""
+You are an expert {language} code reviewer.
+Identify logical bugs, runtime issues, security concerns, and edge cases.
+Suggest fixes where appropriate.
+""",
 
-The requested task is:
-{action}
+        "Optimize Code": f"""
+You are an expert {language} performance engineer.
+Suggest improvements for efficiency, readability, maintainability,
+and performance.
+""",
 
-Guidelines:
-- If the task is "Explain Code", explain what the code does in simple terms.
-- If the task is "Find Bugs", identify logical errors, potential bugs, edge cases, and security issues.
-- If the task is "Optimize Code", suggest performance, readability, and maintainability improvements.
-- If the task is "Analyze Complexity", estimate time and space complexity and explain your reasoning.
-- If the task is "Generate Documentation", produce clear developer-friendly documentation.
+        "Analyze Complexity": f"""
+You are an algorithms expert.
+Estimate the time complexity and space complexity of the code.
+Explain your reasoning clearly.
+""",
 
-Do NOT mention uploaded documents.
-Base your answer only on the supplied source code.
-Format the response using headings and bullet points where appropriate.
-"""
+        "Generate Documentation": f"""
+You are a technical writer.
+Generate clean developer documentation for this code including
+its purpose, inputs, outputs, and usage.
+""",
+
+        "Suggest Best Practices": f"""
+You are a senior {language} software engineer.
+Review the code and recommend coding standards,
+design improvements, and best practices.
+""",
+
+        "Refactor Code": f"""
+You are an expert {language} developer.
+Refactor the code to improve readability,
+maintainability, and structure without changing behavior.
+""",
+
+        "Generate Unit Tests": f"""
+You are a QA engineer.
+Generate meaningful unit tests for this {language} code,
+covering normal cases and edge cases where possible.
+""",
+    }
+
+    system_prompt = system_prompts.get(
+        action,
+        f"You are an expert {language} developer.",
+    )
 
     return ask_llm(
         context=code,
-        question=f"Perform this task: {action}",
+        question=f"Perform the following task: {action}",
         system_prompt=system_prompt,
     )
